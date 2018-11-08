@@ -1,0 +1,228 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        //Credit学分 Points分数 StudyScore 学分
+        static double returnCredit(double Points)
+        {
+            double Credit = 0.0;
+
+            if (Points <= 100 && Points >= 90)
+            {
+                Credit = 4.0;
+            }
+            if (Points <= 89 && Points >= 85)
+            {
+                Credit = 3.7;
+            }
+            if (Points <= 81 && Points >= 82)
+            {
+                Credit = 3.3;
+            }
+            if (Points <= 81 && Points >= 78)
+            {
+                Credit = 3.0;
+            }
+            if (Points <= 77 && Points >= 75)
+            {
+                Credit = 2.7;
+            }
+            if (Points <= 74 && Points >= 72)
+            {
+                Credit = 2.3;
+            }
+            if (Points <= 71 && Points >= 68)
+            {
+                Credit = 2.0;
+            }
+            if (Points <= 67 && Points >= 66)
+            {
+                Credit = 1.7;
+            }
+            if (Points <= 65 && Points >= 64)
+            {
+                Credit = 1.5;
+            }
+            if (Points <= 63 && Points >= 60)
+            {
+                Credit = 1.0;
+            }
+            if (Points <= 59)
+            {
+                Credit = 0.0;
+            }
+
+
+            return Credit;
+        }
+        static string returnGrade(double Points)
+        {
+            string Grade = "不";
+
+            if (Points <= 100 && Points >= 90)
+            {
+                Grade = "优";
+            }
+            if (Points <= 89 && Points >= 78)
+            {
+                Grade = "良";
+            }
+            if (Points <= 77 && Points >= 68)
+            {
+                Grade = "中";
+            }
+            if (Points <= 67 && Points >= 60)
+            {
+                Grade = "及";
+            }
+
+            return Grade;
+        }//returnGrade
+        static double returnGPA(
+            double computer_credit,//电脑绩点
+            double english_credit,//英语绩点
+            double math_credit//数学绩点
+            )
+        {
+            double GPA;
+            GPA = ((computer_credit * 4 +
+                english_credit * 5 +
+                math_credit * 3)
+                / 3) / (4 + 5 + 3);
+            return GPA;
+        }
+        static string returnYou(double computer_points, double english_points, double math_points)
+        {
+            string A = "";
+            string B = "";
+            string C = "";
+
+            if (returnGrade(computer_points).Equals("优")) A = " 计算机 ";
+            if (returnGrade(english_points).Equals("优")) B = " 英语 ";
+            if (returnGrade(math_points).Equals("优")) C = " 数学 ";
+            if ((A + B + C).Equals("")) A = "无";
+            return A + B + C;
+        }
+        static string returnLiang(double computer_points, double english_points, double math_points)
+        {
+            string A = "";
+            string B = "";
+            string C = "";
+
+            if (returnGrade(computer_points).Equals("良")) A = " 计算机 ";
+            if (returnGrade(english_points).Equals("良")) B = " 英语 ";
+            if (returnGrade(math_points).Equals("良")) C = " 数学 ";
+            if ((A + B + C).Equals("")) A = "无";
+            return A + B + C;
+        }
+        static string returnZhong(double computer_points, double english_points, double math_points)
+        {
+            string A = "";
+            string B = "";
+            string C = "";
+
+            if (returnGrade(computer_points).Equals("中")) A = " 计算机 ";
+            if (returnGrade(english_points).Equals("中")) B = " 英语 ";
+            if (returnGrade(math_points).Equals("中")) C = " 数学 ";
+            if ((A + B + C).Equals("")) A = "无";
+            return A + B + C;
+        }
+        static string returnJi(double computer_points, double english_points, double math_points)
+        {
+            string A = "";
+            string B = "";
+            string C = "";
+
+            if (returnGrade(computer_points).Equals("及")) A = " 计算机 ";
+            if (returnGrade(english_points).Equals("及")) B = " 英语 ";
+            if (returnGrade(math_points).Equals("及")) C = " 数学 ";
+            if ((A + B + C).Equals("")) A = "无";
+            return A + B + C;
+        }
+        static string returnBu(double computer_points, double english_points, double math_points)
+        {
+            string A = "";
+            string B = "";
+            string C = "";
+
+            if (returnGrade(computer_points).Equals("不")) A = " 计算机 ";
+            if (returnGrade(english_points).Equals("不")) B = " 英语 ";
+            if (returnGrade(math_points).Equals("不")) C = " 数学 ";
+            if ((A + B + C).Equals("")) A = "无";
+            return A + B + C;
+        }
+        static void Main(string[] args)
+        {
+            //定义学生基本信息
+            string name;
+            string age;
+            string class_what;
+            double computer_points;
+            double english_points;
+            double math_points;
+
+            //输入学生基本信息;
+            Console.WriteLine("请输入...");
+            Console.Write("姓名:");
+            name = Convert.ToString(Console.ReadLine());
+            Console.Write("年龄:");
+            age = Convert.ToString(Console.ReadLine());
+            Console.Write("班级:");
+            class_what = Convert.ToString(Console.ReadLine());
+            Console.Write("计算机成绩:");
+            computer_points = Convert.ToDouble(Console.ReadLine());
+            Console.Write("英语成绩:");
+            english_points = Convert.ToDouble(Console.ReadLine());
+            Console.Write("数学成绩:");
+            math_points = Convert.ToDouble(Console.ReadLine());
+
+            //留白
+            Console.WriteLine(" ");
+            Console.WriteLine(" ");
+            Console.WriteLine(" ");
+            Console.WriteLine(" ");
+
+            //输出
+            Console.WriteLine(name);
+            Console.WriteLine(age);
+            Console.WriteLine(class_what);
+            Console.WriteLine("计算机成绩:"+computer_points);
+            Console.WriteLine("英语成绩:" + english_points);
+            Console.WriteLine("数学成绩:" + math_points);
+
+            double computer_credit = returnCredit(computer_points);
+            double english_credit = returnCredit(english_points);
+            double math_credit = returnCredit(math_points);
+            double GPA = returnGPA(computer_credit, english_credit, math_credit);
+
+            Console.WriteLine("平均学分绩点:" + GPA);
+            Console.WriteLine("总分:" + (computer_points+english_points+math_points));
+            Console.WriteLine("平均分:" + (computer_points + english_points + math_points)/3);
+
+            String You = returnYou(computer_points, english_points, math_points);
+            String Liang = returnLiang(computer_points, english_points, math_points);
+            String Zhong = returnZhong(computer_points, english_points, math_points);
+            String Ji = returnJi(computer_points, english_points, math_points);
+            String Bu = returnBu(computer_points, english_points, math_points);
+
+
+            Console.WriteLine("优秀:" + You);
+            Console.WriteLine("良好:" + Liang);
+            Console.WriteLine("中等:" + Zhong);
+            Console.WriteLine("及格:" + Ji);
+            Console.WriteLine("不及格:" + Bu);
+
+
+            Console.ReadKey();//按任意键以继续
+        }
+
+        
+       
+        
+    }//mainProgram
+}
